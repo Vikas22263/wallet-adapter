@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import "./App.css";
 import * as walletadapter from "@solana/wallet-adapter-base";
-import { clusterApiUrl, Keypair } from "@solana/web3.js";
+import { clusterApiUrl } from "@solana/web3.js";
 import {
   WalletModalProvider,
   WalletDisconnectButton,
@@ -11,8 +11,12 @@ import {
   ConnectionProvider,
   WalletProvider,
 } from "@solana/wallet-adapter-react";
+import AirDrop from "./components/airdrop";
+import Showbalance from "./components/Showbalance";
+import SendMoney from "./components/SendMoney";
+
 function App() {
-  const network = walletadapter.WalletAdapterNetwork.Mainnet;
+  const network = walletadapter.WalletAdapterNetwork.Devnet;
   const endpoint = useMemo(() => clusterApiUrl(network), [network]);
 
 
@@ -26,6 +30,9 @@ function App() {
               <WalletMultiButton />
               <WalletDisconnectButton />
             </div>
+            <AirDrop/>
+            <Showbalance/>
+            <SendMoney/>
           </WalletModalProvider>
         </WalletProvider>
       </ConnectionProvider>
